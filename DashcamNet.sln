@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashcamNet", "DashcamNet\DashcamNet.csproj", "{272E9934-D042-4155-9662-E5DBBDC795DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashcamTest", "DashcamTest\DashcamTest.csproj", "{F87C3460-8A11-409A-A906-58A1556E9DA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{272E9934-D042-4155-9662-E5DBBDC795DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{272E9934-D042-4155-9662-E5DBBDC795DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{272E9934-D042-4155-9662-E5DBBDC795DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F87C3460-8A11-409A-A906-58A1556E9DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87C3460-8A11-409A-A906-58A1556E9DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87C3460-8A11-409A-A906-58A1556E9DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87C3460-8A11-409A-A906-58A1556E9DA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

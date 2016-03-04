@@ -30,6 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ClutchNet">
+      <HintPath>..\..\ClutchNet\ClutchNet\bin\Debug\ClutchNet.dll</HintPath>
+    </Reference>
+    <Reference Include="EtcdNet">
+      <HintPath>..\..\ClutchNet\ClutchNet\bin\Debug\EtcdNet.dll</HintPath>
+    </Reference>
+    <Reference Include="kafka-net, Version=0.9.0.65, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\kafka-net.0.9.0.65\lib\net45\kafka-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -37,11 +47,58 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Thrift, Version=0.9.1.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Thrift.0.9.1.3\lib\net35\Thrift.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AgentManager.cs" />
+    <Compile Include="Common\ChunkBuilder.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\DateUtil.cs" />
+    <Compile Include="Common\HostUtil.cs" />
+    <Compile Include="Common\IdentityUtil.cs" />
+    <Compile Include="Common\LogConfig.cs" />
+    <Compile Include="Common\LogEventUtil.cs" />
+    <Compile Include="Common\RandomUtil.cs" />
+    <Compile Include="ILog.cs" />
+    <Compile Include="IMessageSender.cs" />
+    <Compile Include="ISampler.cs" />
+    <Compile Include="ILogSender.cs" />
+    <Compile Include="ISpan.cs" />
+    <Compile Include="ITrace.cs" />
+    <Compile Include="ITraceSender.cs" />
+    <Compile Include="LogManager.cs" />
+    <Compile Include="Log\DashcamLogger.cs" />
+    <Compile Include="Log\EmptyLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sender\DashcamLogSender.cs" />
+    <Compile Include="Sender\DashcamTraceSender.cs" />
+    <Compile Include="Sender\KafkaMessageSender.cs" />
+    <Compile Include="Sender\MessageBuffer.cs" />
+    <Compile Include="Trace\AlwaysSampler.cs" />
+    <Compile Include="Trace\MilliSpan.cs" />
+    <Compile Include="Thrift\Chunk.cs" />
+    <Compile Include="Thrift\Event.cs" />
+    <Compile Include="Thrift\LogEvent.cs" />
+    <Compile Include="Thrift\LogLevel.cs" />
+    <Compile Include="Thrift\LogType.cs" />
+    <Compile Include="Thrift\MetricEvent.cs" />
+    <Compile Include="Thrift\MetricValueType.cs" />
+    <Compile Include="Thrift\Result.cs" />
+    <Compile Include="Thrift\ResultCode.cs" />
+    <Compile Include="Thrift\Span.cs" />
+    <Compile Include="Thrift\SpanType.cs" />
+    <Compile Include="TraceManager.cs" />
+    <Compile Include="Trace\DashcamTracer.cs" />
+    <Compile Include="Trace\NullSpan.cs" />
+    <Compile Include="Trace\RootMilliSpan.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
