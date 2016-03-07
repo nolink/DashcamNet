@@ -77,6 +77,7 @@
     <Compile Include="Sender\DashcamTraceSender.cs" />
     <Compile Include="Sender\KafkaMessageSender.cs" />
     <Compile Include="Sender\MessageBuffer.cs" />
+    <Compile Include="TagBuilder.cs" />
     <Compile Include="Trace\AlwaysSampler.cs" />
     <Compile Include="Trace\MilliSpan.cs" />
     <Compile Include="Thrift\Chunk.cs" />
