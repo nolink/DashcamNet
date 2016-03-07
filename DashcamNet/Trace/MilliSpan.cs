@@ -20,6 +20,8 @@ namespace DashcamNet.Trace
         public MilliSpan(String name, String serviceName, long id, ISpan parent, SpanType spanType, DashcamTracer tracer)
         {
             this.innerSpan = new Span();
+            //这段初始化代码，java版不需要
+            this.innerSpan.LogEvents = new List<LogEvent>();
             if (String.IsNullOrEmpty(name))
             {
                 this.innerSpan.Name="NoNameSpan";
@@ -111,7 +113,7 @@ namespace DashcamNet.Trace
             return parent;
         }
 
-        public long getTraceId()
+        public virtual long getTraceId()
         {
             return this.parent.getTraceId();
         }
@@ -121,7 +123,7 @@ namespace DashcamNet.Trace
             return new MilliSpan(name, serviceName, RandomUtil.NextLong(), this, spanType, (DashcamTracer)tracer);
         }
 
-        public long getParentId()
+        public virtual long getParentId()
         {
             return this.parent.getSpanId();
         }

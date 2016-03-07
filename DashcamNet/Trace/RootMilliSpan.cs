@@ -21,12 +21,12 @@ namespace DashcamNet.Trace
             this.getInnerSpan().ParentId = parentId;
         }
 
-        public long getTraceId()
+        public override long getTraceId()
         {
             return traceId;
         }
 
-        public long getParentId()
+        public override long getParentId()
         {
             return parentId;
         }
