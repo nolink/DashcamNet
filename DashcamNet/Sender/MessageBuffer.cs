@@ -28,25 +28,33 @@ namespace DashcamNet.Sender
             this.sender = sender;
             this.buildChunk = new ChunkBuilder();
             this.start = DateUtil.CurrentTimeMillis();
+            var task = Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    var now = DateUtil.CurrentTimeMillis();
+                    if (collection.Count > chunkSize || (collection.Count > 0 && now - start >= sender.getMinInterval()))
+                    {
+                        collection.DrainAndApply((tmpBase) =>
+                        {
+                            buildChunk.putMsg(tmpBase);
+                        });
+                        sender.send(buildChunk.getChunk());
+                        buildChunk.clear();
+                        this.start = now;
+                    }
+                    else
+                    {
+                        System.Threading.Thread.Sleep(10);
+                    }
+                }
+            }, TaskCreationOptions.LongRunning);
         }
 
         public void Put(TBase tbase)
         {
             collection.Add(tbase);
-
-            var now = DateUtil.CurrentTimeMillis();
-            if (collection.Count > chunkSize || (collection.Count > 0 && now - start >= sender.getMinInterval()))
-            {
-                collection.DrainAndApply((tmpBase) => {
-                    buildChunk.putMsg(tmpBase);
-                });
-                sender.send(buildChunk.getChunk());
-                buildChunk.clear();
-                this.start = now;
-            }
         }
-
-
 
     }
 }
